@@ -23,9 +23,9 @@ root.iconphoto(False, icon)
 userselect = ctk.CTkOptionMenu(frame, values=users, font=(font, 20), width=100, )
 userselect.configure(width=100)
 userselect.pack(pady=50)
-
+binumlabel = ctk.CTkLabel(frame, text='Bin Number', font=(font,30)).pack()
 binum = ctk.CTkEntry(master=frame, placeholder_text='Bin Number', width=300, font=(font, 20))
-binum.pack(pady=10)
+binum.pack(pady=50)
 
 itemnum = ctk.CTkEntry(master=frame, placeholder_text='Item Number', width=300, font=(font, 20))
 itemnum.pack(pady=10)
