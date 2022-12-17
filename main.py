@@ -3,13 +3,16 @@ from tkinter import PhotoImage
 import customtkinter as ctk
 import functions
 import keyboard
-
-font = 'Lato Regular'
+displayfont = "EthnocentricRg-Regular"
+typefont = 'Lato Regular'
 users = ['', 'Geris', 'Henry', 'Zoe', 'Jonida','VERY LONG SENTENCE VERY LONG SENTENCE VERY LONG SENTENCE VERY LONG SENTENCE ']
 rounds = ['','A','B','C','D']
 
 ctk.set_appearance_mode('System')
 ctk.set_default_color_theme('dark-blue')
+
+
+
 
 root = ctk.CTk()
 frame = ctk.CTkFrame(master=root)
@@ -20,31 +23,51 @@ icon = PhotoImage(file='EzInventory.png')
 root.iconphoto(False, icon)
 spacerlabel = ctk.CTkLabel(frame, text="")
 
-titlelabel = ctk.CTkLabel(frame, text='EzInventory', font=("EthnocentricRg-Regular", 40), text_color='deep sky blue').pack(pady=20)
+titlelabel = ctk.CTkLabel(frame, text='EzInventory', font=(displayfont, 40), text_color='deep sky blue').pack(pady=20)
 
 
-userselectlabel = ctk.CTkLabel(frame, text='User:', font=(font, 15)).pack()
-userselect = ctk.CTkOptionMenu(frame, values=users, font=(font, 20), width=100).pack(pady=10)
+userselectlabel = ctk.CTkLabel(frame, text='User:', font=(typefont, 15)).pack()
+userselect = ctk.CTkOptionMenu(frame, values=users, font=(typefont, 20), width=100).pack(pady=10)
 
-roundselectlabel = ctk.CTkLabel(frame, text='Round:', font=(font, 15)).pack()
-roundselect = ctk.CTkOptionMenu(frame, values=rounds, font=(font, 20), width=100)
-roundselect.pack()
+roundselectlabel = ctk.CTkLabel(frame, text='Round:', font=(typefont, 15)).pack()
+roundselect = ctk.CTkOptionMenu(frame, values=rounds, font=(typefont, 20), width=100).pack()
+
 spacerlabel.pack()
-binumlabel = ctk.CTkLabel(frame, text='Bin Number:', font=(font, 20)).pack(pady=0)
 
-binum = ctk.CTkEntry(master=frame, placeholder_text='Bin Number', width=300, font=(font, 20))
+binumlabel = ctk.CTkLabel(frame, text='Bin Number:', font=(typefont, 20)).pack(pady=0)
+
+binum = ctk.CTkEntry(master=frame, placeholder_text='Bin Number', width=300, font=(typefont, 20))
 binum.pack(pady=10)
 
 
 
-itemnum = ctk.CTkEntry(master=frame, placeholder_text='Item Number', width=300, font=(font, 20))
+
+itemnum = ctk.CTkEntry(master=frame, placeholder_text='Item Number', width=300, font=(typefont, 20))
 itemnum.pack(pady=10)
 
-lotnum = ctk.CTkEntry(master=frame, placeholder_text='Lot Number', width=300, font=(font, 20))
+
+lotnum = ctk.CTkEntry(master=frame, placeholder_text='Lot Number', width=300, font=(typefont, 20))
 lotnum.pack(pady=10)
 
-qty = ctk.CTkEntry(master=frame, placeholder_text='Quantity Number', width=300, font=(font, 20))
+
+qty = ctk.CTkEntry(master=frame, placeholder_text='Quantity Number', width=300, font=(typefont, 20))
 qty.pack(pady=10)
+
+submitime = ctk.CTkLabel(frame, text=functions.submission_time(), font=(typefont, 20))
+
+def official_submit():
+    submitime.pack()
+    functions.item_save()
+
+submitbutton = ctk.CTkButton(frame, text='Submit', font=(displayfont,30), command=official_submit).pack(pady=10)
+
+lotcompletebutton = ctk.CTkButton(frame, text='Lot Complete', font=(displayfont,30)).pack(pady=10)
+
+
+
+
+
+
 
 
 def bin_enter(event):
@@ -60,7 +83,7 @@ def lot_enter(event):
     qty.focus_set()
     qty.delete(0, ctk.END)
 def qty_enter(event):
-    functions.item_save()
+    official_submit()
     itemnum.focus_set()
     itemnum.delete(0, ctk.END)
     lotnum.delete(0, ctk.END)
