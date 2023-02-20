@@ -5,7 +5,7 @@ import functions
 import keyboard
 displayfont = "EthnocentricRg-Regular"
 typefont = 'Lato Regular'
-users = ['', 'Geris', 'Henry', 'Zoe', 'Jonida','VERY LONG SENTENCE VERY LONG SENTENCE VERY LONG SENTENCE VERY LONG SENTENCE ']
+users = ['User', 'Other User']
 rounds = ['','A','B','C','D']
 
 ctk.set_appearance_mode('System')
